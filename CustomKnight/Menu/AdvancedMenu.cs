@@ -27,7 +27,7 @@ namespace CustomKnight
         private static Menu PrepareMenu()
         {
 
-            var menu = new Menu("CK Advanced Options", new Element[]{
+            var menu = MenuHookFix.Create("CK Advanced Options", new Element[]{
                 new HorizontalOption(
                     "Swapper", "Apply skin to bosses, enemies & areas",
                     new string[] { "Disabled", "Enabled" },

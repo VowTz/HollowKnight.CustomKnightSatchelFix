@@ -66,7 +66,7 @@ namespace CustomKnight
         }
         internal static Menu PrepareMenu()
         {
-            var menu = new Menu("Select a skin", new Element[]{
+            var menu = MenuHookFix.Create("Select a skin", new Element[]{
                 new TextPanel("Select the Skin to Apply",Id:"helptext"),
                 new TextPanel("Applying skin...",Id:"applying"){isVisible=false}
             });

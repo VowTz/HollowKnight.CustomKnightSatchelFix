@@ -58,7 +58,7 @@ namespace CustomKnight
         }
         internal static Menu PrepareMenu(ModToggleDelegates toggleDelegates)
         {
-            return new Menu("Custom Knight", new Element[]{
+            return MenuHookFix.Create("Custom Knight", new Element[]{
                 Blueprints.CreateToggle(toggleDelegates,"Custom Skins", "", "Enabled","Disabled"),
                 new HorizontalOption(
                     "Select Skin", "The skin will be used for current save and any new saves.",
@@ -95,14 +95,17 @@ namespace CustomKnight
         }
         internal static MenuScreen GetMenu(MenuScreen lastMenu, ModToggleDelegates? toggleDelegates)
         {
-            MenuRef ??= PrepareMenu((ModToggleDelegates)toggleDelegates);
-            MenuRef.OnBuilt += (_, Element) =>
+            if (MenuRef == null)
             {
-                if (SkinManager.CurrentSkin != null)
+                MenuRef = PrepareMenu((ModToggleDelegates)toggleDelegates);
+                MenuRef.OnBuilt += (_, Element) =>
                 {
-                    SelectedSkin(SkinManager.CurrentSkin.GetId());
-                }
-            };
+                    if (SkinManager.CurrentSkin != null)
+                    {
+                        SelectedSkin(SkinManager.CurrentSkin.GetId());
+                    }
+                };
+            }
             return MenuRef.GetMenuScreen(lastMenu);
         }
     }

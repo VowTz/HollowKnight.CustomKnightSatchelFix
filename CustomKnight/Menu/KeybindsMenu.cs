@@ -9,7 +9,7 @@ namespace CustomKnight
 
         internal static Menu PrepareMenu()
         {
-            var menu = new Menu("Keybinds", new Element[]{
+            var menu = MenuHookFix.Create("Keybinds", new Element[]{
                 new KeyBind("Pause Menu HotKey" ,CustomKnight.GlobalSettings.Keybinds.OpenSkinList,Id:"PauseMenuHotkey"),
                 new KeyBind("Reload Skins HotKey" ,CustomKnight.GlobalSettings.Keybinds.ReloadSkins,Id:"ReloadSkinsHotkey"),
             });

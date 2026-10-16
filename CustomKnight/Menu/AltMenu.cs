@@ -28,7 +28,7 @@ namespace CustomKnight
         }
         internal static Menu PrepareMenu()
         {
-            var menu = new Menu("Skin Alternates", new Element[]{
+            var menu = MenuHookFix.Create("Skin Alternates", new Element[]{
                 new MenuButton("Update Alts", "Apply selected Alts" ,ApplyAlts),
                 new TextPanel("No Alternates detected, please update skin-config.json",Id : "helpText") { isVisible = false}
             });
